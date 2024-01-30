@@ -28,6 +28,19 @@ app.post('/api/notes', (req, res) => {
   res.json(newNote);
 });
 
+app.delete('/api/notes/:id', (req, res) => {
+  const noteId = req.params.id;
+  let notes = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
+
+  // Filter out the note with the specified ID
+  notes = notes.filter((note) => note.id !== parseInt(noteId));
+
+  // Save the updated notes array back to the file
+  fs.writeFileSync('./db/db.json', JSON.stringify(notes));
+
+  res.json({ success: true, message: 'Note deleted successfully' });
+});
+
 
 app.get('/notes', (req, res) => {
   res.sendFile(path.join(__dirname, '/public/notes.html'));
