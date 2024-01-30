@@ -18,13 +18,13 @@ app.get('/api/notes', (req, res) => {
   res.json(notes);
 });
 
-
+//note to self: make sure your file paths are legit or it screws up your world
 app.post('/api/notes', (req, res) => {
   const newNote = req.body;
   newNote.id = generateUniqueId(); 
   const notes = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
   notes.push(newNote);
-  fs.writeFileSync('./db.json', JSON.stringify(notes));
+  fs.writeFileSync('./db/db.json', JSON.stringify(notes));
   res.json(newNote);
 });
 
