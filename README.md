@@ -22,7 +22,7 @@ Express.js
 
 ## Links
 
-Link to deployed web application [HERE] ()
+Link to deployed web application [HERE] (https://bryn-note-taker-65f78605a07a.herokuapp.com/)
 
 
 ## Questions
